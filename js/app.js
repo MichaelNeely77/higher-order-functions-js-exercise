@@ -236,9 +236,9 @@ const cars = [
 // SOME
 // returns true or false
 
-let result = cars.some(car => car.make === 'Ferrari');
+// let result = cars.some(car => car.make === 'Ferrari');
 
-console.log(result);
+// console.log(result);
 
 
 
