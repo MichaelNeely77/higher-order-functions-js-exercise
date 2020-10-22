@@ -185,7 +185,7 @@ function getCars() {
 }
 
 // Search terms object
-letsearchFields = {
+let searchFields = {
     make: '',
     year: '',
     min: '',
@@ -200,6 +200,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const cars = getCars();
     showCars(cars);
 
+});
+
+// Event listeners for the Form Elements
+const year = document.querySelector('#make');
+year.addEventListener('input', e => {
+    searchFields.make = e.target.value;
+    // execute the filter cars bassed on the items that we have in the search fields object
+    filterCars();
 });
 
 function showCars(cars) {
@@ -218,12 +226,16 @@ function showCars(cars) {
     })
 }
 
-// {
-//     make: 'BMW',
-//     carmodel: 'Serie 5',
-//     year: 2017,
-//     price: 80000,
-//     doors: 4,
-//     color: 'Black',
-//     transmission: 'automatic'
-// },
+function filterCars() {
+    const result = getCars().filter(filterMake);
+
+    console.log(result);
+}
+
+function filterMake(car) {
+    if(searchFields.make) {
+        return car.make === searchFields.make 
+    } else {
+        
+    }
+}
