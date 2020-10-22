@@ -204,5 +204,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function showCars(cars) {
 
+    // get the coontainer
+    const container  = document.querySelector('#result');
+
+
+    // Build the HTML and print the data inthe container
+    cars.forEach(car => {
+        const carHTML = document.createElement('p');
+        carHTML.innerHTML = `
+            ${car.make} - ${car.year} - ${car.carmodel} - ${car.doors} -Transmission: ${car.transmission} - ${car.price} - ${car.color}
+        `;
+        container.appendChild(carHTML);
+    })
 }
 
+// {
+//     make: 'BMW',
+//     carmodel: 'Serie 5',
+//     year: 2017,
+//     price: 80000,
+//     doors: 4,
+//     color: 'Black',
+//     transmission: 'automatic'
+// },
