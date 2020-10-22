@@ -203,9 +203,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Event listeners for the Form Elements
-const year = document.querySelector('#make');
-year.addEventListener('input', e => {
+const make = document.querySelector('#make');
+make.addEventListener('input', e => {
     searchFields.make = e.target.value;
+    // execute the filter cars bassed on the items that we have in the search fields object
+    filterCars();
+});
+
+const year = document.querySelector('#year');
+year.addEventListener('input', e => {
+    searchFields.year = Number(e.target.value);
     // execute the filter cars bassed on the items that we have in the search fields object
     filterCars();
 });
@@ -227,7 +234,7 @@ function showCars(cars) {
 }
 
 function filterCars() {
-    const result = getCars().filter(filterMake);
+    const result = getCars().filter(filterMake).filter(filterYear);
 
     console.log(result);
 }
@@ -236,6 +243,14 @@ function filterMake(car) {
     if(searchFields.make) {
         return car.make === searchFields.make 
     } else {
-        
+        return car;
+    }
+}
+
+function filterYear(car) {
+    if(searchFields.year) {
+        return car.year === searchFields.year 
+    } else {
+        return car;
     }
 }
