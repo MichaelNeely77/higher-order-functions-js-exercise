@@ -281,13 +281,22 @@ function showCars(cars) {
     })
 }
 
+function noResults() {
+    clearHTML();
+    // BUild the alert
+    const noResults = document.createElement('div');
+    noResults.classList.add('alert', 'error');
+    noResults.appendChild(document.createTextNode('No Results Fond'));
+    document.querySelector('#result').appendChild(noResults);
+}
+
 function filterCars() {
     const result = getCars().filter(filterMake).filter(filterYear).filter(filterMinPrice).filter(filterMaxPrice).filter(filterDoors).filter(filterTransmission).filter(filterColor);
 
     if(result.length) {
         showCars(result);
     } else {
-        alert('No Results Found');
+        noResults();
     }
 }
 
